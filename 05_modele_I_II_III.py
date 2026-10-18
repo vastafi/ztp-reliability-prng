@@ -16,9 +16,11 @@ de cifre al fiecărei surse.
 Utilizare (din directorul proiectului):
     python 05_modele_I_II_III.py            # toate cele trei modele
     python 05_modele_I_II_III.py II         # un singur model
-Rezultate: rezultate_model_I.json, rezultate_model_II.json, rezultate_model_III.json
+Rezultate: results/rezultate_model_I.json, results/rezultate_model_II.json, results/rezultate_model_III.json
+Figurile se generează apoi cu: python 06_figuri_modele_I_II_III.py
 """
 import sys, glob, math, json
+from pathlib import Path
 import numpy as np, pandas as pd
 from scipy import stats
 
@@ -129,14 +131,19 @@ def run(ddir, model):
             crqi_b = 1 - D @ W
             res[lab] = {'dbar': D.mean(0).tolist(), 'CRQI_simplu': float(1 - D.mean(0).mean()),
                         'CRQI_ponderat': float(1 - D.mean(0) @ W), 'sd_ponderat': float(crqi_b.std(ddof=0)),
-                        'emp_mean': float(X.mean()), 'emp_pmf': (np.bincount(X, minlength=K+1)/len(X)).tolist()}
+                        'emp_mean': float(X.mean()), 'crqi_b': crqi_b.tolist(), 'emp_pmf': (np.bincount(X, minlength=K+1)/len(X)).tolist()}
         out['sources'][name] = res
         print(f"Modelul {ROMAN[model]} | {name}: {res['replicas']} replici, cifre {res['digits_used']:,}/{res['digits_total']:,} | "
               f"CRQI ponderat S-P {res['SP']['CRQI_ponderat']:.6f}, P-S {res['PS']['CRQI_ponderat']:.6f}", flush=True)
-    json.dump(out, open(f'rezultate_model_{ROMAN[model]}.json', 'w'), indent=1, default=float)
+    RESULTS.mkdir(exist_ok=True)
+    path = RESULTS / f'rezultate_model_{ROMAN[model]}.json'
+    json.dump(out, open(path, 'w'), indent=1, default=float)
+    print(f'Salvat: {path}')
 
+BASE_DIR = Path(__file__).resolve().parent
+RESULTS = BASE_DIR / 'results'
 ROMAN = {'A': 'I', 'B': 'II', 'C': 'III'}
 if __name__ == '__main__':
     pick = {'I': 'A', 'II': 'B', 'III': 'C'}
     models = [pick[sys.argv[1]]] if len(sys.argv) > 1 else ['A', 'B', 'C']
-    for m in models: run('data', m)
+    for m in models: run(str(BASE_DIR / 'data'), m)
