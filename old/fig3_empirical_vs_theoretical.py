@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-DATA_DIR = "/Users/astafivalentina/PycharmProjects/Poisson_trunc/data"
+DATA_DIR = "/data"
 M = 3
 LAMBDA_TRUE = 2.5
 

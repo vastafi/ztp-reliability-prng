@@ -15,7 +15,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import chisquare
 
-DATA_DIR = "data"  # ajusteaza daca ai dezarhivat in alta parte
+DATA_DIR = "../data"  # ajusteaza daca ai dezarhivat in alta parte
 
 SOURCES = {
     "Java ThreadLocalRandom": f"{DATA_DIR}/java_threadlocal/*.csv",

@@ -19,7 +19,7 @@ import numpy as np
 import pandas as pd
 import math
 
-DATA_DIR = "data"
+DATA_DIR = "../data"
 M = 3
 
 SOURCES = {

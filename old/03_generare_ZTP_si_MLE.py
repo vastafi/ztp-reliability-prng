@@ -30,7 +30,7 @@ import math
 import numpy as np
 import pandas as pd
 
-DATA_DIR = "data"
+DATA_DIR = "../data"
 M = 3
 LAMBDA_TRUE = 2.5          # <-- ASUMAT, vezi nota de mai sus
 R_REPLICATIONS = 1000      # numar de seturi independente (ca in articol)

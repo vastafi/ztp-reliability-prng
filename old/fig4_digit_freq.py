@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-DATA_DIR = "/Users/astafivalentina/PycharmProjects/Poisson_trunc/data"
+DATA_DIR = "/data"
 SOURCES = {
     "Java ThreadLocalRandom": (f"{DATA_DIR}/java_threadlocal/*.csv", '#2a78d6'),
     "Python secrets": (f"{DATA_DIR}/python_secrets/*.csv", '#1baf7a'),

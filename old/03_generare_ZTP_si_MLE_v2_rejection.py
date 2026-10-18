@@ -35,7 +35,7 @@ import math
 import numpy as np
 import pandas as pd
 
-DATA_DIR = "data"
+DATA_DIR = "../data"
 M = 3
 LAMBDA_TRUE = 2.5           # parametrul Poisson folosit la generare (neschimbat)
 R_REPLICATIONS = 1000
