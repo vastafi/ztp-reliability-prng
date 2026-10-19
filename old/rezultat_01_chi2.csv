@@ -1,4 +1,0 @@
-Sursa PRNG,n (cifre),chi2 calculat,"chi2 critic (df=9, a=0.05)",p-valoare,Decizie
-Java ThreadLocalRandom,15688140,13.7268,16.919,0.1324,Nu respinge H0
-Python secrets,15688140,2.3697,16.919,0.9842,Nu respinge H0
-Cifrele lui pi,15688140,4.9008,16.919,0.8429,Nu respinge H0

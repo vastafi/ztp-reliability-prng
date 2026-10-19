@@ -35,7 +35,7 @@ plt.rcParams.update({
     "figure.dpi": 220,
 })
 
-OUT = "fg"
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fg")
 os.makedirs(OUT, exist_ok=True)
 
 # ---------------------------------------------------------------- model
