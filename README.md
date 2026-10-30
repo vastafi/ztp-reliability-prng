@@ -26,6 +26,8 @@ ztp/                       codul comun
 03_figuri.py               Figurile 1–6, din results/ (fără resimulare) -> figure/
 04_anova.py                ANOVA / Kruskal-Wallis între surse, cu mărimile efectului -> results/
 05_sensibilitate.py        controale, sensibilitatea ponderilor CRQI, ordinea stocastică -> results/
+06_referinte_doua_niveluri.py  cazul clasic M = N = 3, generatorul de referință PCG64,
+                           testul pe două niveluri pentru D7/D9 (Tabelele 8 și 14) -> results/
 results/                   toate rezultatele numerice (JSON + CSV)
 figure/                    figurile articolului (numerotarea din articol)
 caim2026/                  figurile pentru prezentarea CAIM 2026
@@ -40,4 +42,5 @@ python 02_simulare_crqi.py        # ~1 minut; sau: python 02_simulare_crqi.py II
 python 03_figuri.py
 python 04_anova.py
 python 05_sensibilitate.py
+python 06_referinte_doua_niveluri.py   # ~1,5 minute
 ```
