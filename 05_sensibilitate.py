@@ -57,7 +57,8 @@ def main():
         res["ordine"] = dict(R_U_minus_R_V=diff.tolist(),
                              U_st_mai_mare=bool((diff >= -1e-15).all()), V_st_mai_mare=bool((diff <= 1e-15).all()))
         out[m] = res
-        print(f"Modelul {m}: control {{{', '.join(f'{k}: p={v['p_mann_whitney']:.1e}' for k, v in res['control'].items())}}}")
+        ctrl = ", ".join("{}: p={:.1e}".format(k, v["p_mann_whitney"]) for k, v in res["control"].items())
+        print("Modelul {}: control {{{}}}".format(m, ctrl))
         print(f"   locul 1 (aritmetic): {res['ponderi']['aritmetica']}")
         print(f"   ordine: U>=V pe tot suportul: {res['ordine']['U_st_mai_mare']}, V>=U: {res['ordine']['V_st_mai_mare']}")
     json.dump(out, open(RESULTS_DIR / "sensibilitate.json", "w", encoding="utf-8"), indent=1)
