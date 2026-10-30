@@ -39,3 +39,33 @@ SOURCES = {
 SOURCE_LABELS = {"Java ThreadLocalRandom": "Java ThreadLocalRandom",
                  "Python secrets": "Python secrets",
                  "Cifrele lui pi": "Cifrele lui π"}
+
+# ---- extinderea la 10 surse (Secțiunea 3.5): setul public PRNG-Random-Digits-0-9-Dataset ----
+#   git clone https://github.com/vastafi/PRNG-Random-Digits-0-9-Dataset.git   (lângă acest repozitoriu)
+# sau setați variabila de mediu ZTP_DATASET cu calea către setul de date.
+import os
+DATASET_DIR = Path(os.environ.get("ZTP_DATASET", ROOT.parent / "PRNG-Random-Digits-0-9-Dataset"))
+SOURCE_CLASSES = {
+    "A": "PRNG algoritmic (implicit într-un mediu de calcul)",
+    "B": "CSPRNG (criptografic sigur)",
+    "C": "Secvență matematică deterministă",
+    "D": "TRNG (sursă fizică)",
+}
+# nume -> (clasa, folder, prefixul fișierelor); fișierele: prefix + "", "1", ..., "5" (aceeași ordine ca SOURCES)
+SOURCES_10 = {
+    "C++ rand()":             ("A", "C++", "cpp_random"),
+    "Excel RANDBETWEEN":      ("A", "Excel", "excel_num"),
+    "Java ThreadLocalRandom": ("A", "Java thread local", "threadlocal_data"),
+    "Mathematica":            ("A", "Mathematica", "mathematica_random"),
+    "NumPy default_rng":      ("A", "Python numpy", "numpy_data"),
+    "R sample":               ("A", "R", "r_numbers"),
+    "Java SecureRandom":      ("B", "Java secure random", "securerandom_data"),
+    "Python secrets":         ("B", "Python secrets", "secrets_data"),
+    "Cifrele lui pi":         ("C", "Pi", "pi_digits_part"),
+    "Random.org":             ("D", "Randomorg", "random_org"),
+}
+
+
+def source_files_10(name):
+    _, folder, prefix = SOURCES_10[name]
+    return [DATASET_DIR / folder / f"{prefix}{s}.csv" for s in ["", "1", "2", "3", "4", "5"]]
