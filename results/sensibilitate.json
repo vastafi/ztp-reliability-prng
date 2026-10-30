@@ -1,23 +1,42 @@
 {
  "I": {
-  "control": {},
+  "control": {
+   "RANDU (control)": {
+    "crqi_global": 0.8556650009552006,
+    "crqi_reale": 0.8552309043366787,
+    "p_mann_whitney": 0.822980873948936
+   },
+   "LCG mod 10 (control)": {
+    "crqi_global": 0.7869371401992297,
+    "crqi_reale": 0.8552309043366787,
+    "p_mann_whitney": 1.3199866827048634e-84
+   }
+  },
   "ponderi": {
    "aritmetica": {
     "Java ThreadLocalRandom": 0.055,
     "Python secrets": 0.9197,
     "Cifrele lui pi": 0.0253
    },
-   "aritmetica_control_ultimul": {},
+   "aritmetica_control_ultimul": {
+    "RANDU (control)": 0.0039,
+    "LCG mod 10 (control)": 0.9961
+   },
    "geometrica": {
     "Java ThreadLocalRandom": 0.0253,
     "Python secrets": 0.967,
     "Cifrele lui pi": 0.0077
    },
-   "geometrica_control_ultimul": {},
+   "geometrica_control_ultimul": {
+    "RANDU (control)": 0.0038,
+    "LCG mod 10 (control)": 0.9962
+   },
    "geometrica_ponderi_articol": {
     "Java ThreadLocalRandom": 0.8226986389870178,
     "Python secrets": 0.8259236956449652,
-    "Cifrele lui pi": 0.821840374122575
+    "Cifrele lui pi": 0.821840374122575,
+    "RANDU (control)": 0.8240159031568238,
+    "LCG mod 10 (control)": 0.5787164816123116
    }
   },
   "ordine": {
@@ -37,24 +56,43 @@
   }
  },
  "II": {
-  "control": {},
+  "control": {
+   "RANDU (control)": {
+    "crqi_global": 0.8572640847075779,
+    "crqi_reale": 0.8594954329697926,
+    "p_mann_whitney": 0.3526567898899905
+   },
+   "LCG mod 10 (control)": {
+    "crqi_global": 0.8448899888911551,
+    "crqi_reale": 0.8594954329697926,
+    "p_mann_whitney": 3.3417313748818926e-08
+   }
+  },
   "ponderi": {
    "aritmetica": {
     "Java ThreadLocalRandom": 0.5814,
     "Python secrets": 0.0,
     "Cifrele lui pi": 0.4186
    },
-   "aritmetica_control_ultimul": {},
+   "aritmetica_control_ultimul": {
+    "RANDU (control)": 0.3595,
+    "LCG mod 10 (control)": 0.6117
+   },
    "geometrica": {
     "Java ThreadLocalRandom": 0.5837,
     "Python secrets": 0.0,
     "Cifrele lui pi": 0.4163
    },
-   "geometrica_control_ultimul": {},
+   "geometrica_control_ultimul": {
+    "RANDU (control)": 0.2376,
+    "LCG mod 10 (control)": 0.7576
+   },
    "geometrica_ponderi_articol": {
     "Java ThreadLocalRandom": 0.8335614880891328,
     "Python secrets": 0.8313969269022121,
-    "Cifrele lui pi": 0.8323388509605827
+    "Cifrele lui pi": 0.8323388509605827,
+    "RANDU (control)": 0.8289012416787026,
+    "LCG mod 10 (control)": 0.7534159221928535
    }
   },
   "ordine": {
@@ -74,24 +112,43 @@
   }
  },
  "III": {
-  "control": {},
+  "control": {
+   "RANDU (control)": {
+    "crqi_global": 0.8537864497439384,
+    "crqi_reale": 0.8543398717752091,
+    "p_mann_whitney": 0.7143903620793747
+   },
+   "LCG mod 10 (control)": {
+    "crqi_global": 0.7777923850094086,
+    "crqi_reale": 0.8543398717752091,
+    "p_mann_whitney": 1.56055788107146e-78
+   }
+  },
   "ponderi": {
    "aritmetica": {
     "Java ThreadLocalRandom": 0.1819,
     "Python secrets": 0.0007,
     "Cifrele lui pi": 0.8174
    },
-   "aritmetica_control_ultimul": {},
+   "aritmetica_control_ultimul": {
+    "RANDU (control)": 0.0,
+    "LCG mod 10 (control)": 1.0
+   },
    "geometrica": {
     "Java ThreadLocalRandom": 0.2005,
     "Python secrets": 0.0003,
     "Cifrele lui pi": 0.7992
    },
-   "geometrica_control_ultimul": {},
+   "geometrica_control_ultimul": {
+    "RANDU (control)": 0.0,
+    "LCG mod 10 (control)": 1.0
+   },
    "geometrica_ponderi_articol": {
     "Java ThreadLocalRandom": 0.821357917122266,
     "Python secrets": 0.8205700174139814,
-    "Cifrele lui pi": 0.8234250543549622
+    "Cifrele lui pi": 0.8234250543549622,
+    "RANDU (control)": 0.8203509637343271,
+    "LCG mod 10 (control)": 0.5016493581160724
    }
   },
   "ordine": {
