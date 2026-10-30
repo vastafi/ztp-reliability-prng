@@ -8,6 +8,8 @@ Ieșire (în results/):
     rezultate_model_I.json, ..._II.json, ..._III.json   — toate valorile (deviații, CRQI, CRQI pe seturi, PMF empirice)
     tabel_deviatii_model_*.csv                          — Tabelele 3, 4 (Modelul I), 9, 10 (Modelele II, III)
     tabel_crqi.csv                                      — Tabelele 5, 6 și 8
+Pe lângă cele 3 surse reale se simulează și 2 generatoare de control cu defecte cunoscute
+(ztp/controls.py: RANDU și LCG mod 10), ca să se verifice că metoda detectează un generator slab.
 Pentru fiecare model, simularea pornește de la începutul șirului de cifre al fiecărei surse.
 """
 import json
@@ -17,6 +19,7 @@ import pandas as pd
 from ztp.config import RESULTS_DIR, MODELS, SOURCES, N_SETS, SET_SIZE, CRITERIA, K
 from ztp.models import theory
 from ztp.simulation import load_digits, simulate
+from ztp.controls import CONTROLS, N_CONTROL_DIGITS
 from ztp.criteria import deviations, crqi
 
 
@@ -26,8 +29,11 @@ def run(model, digits_cache):
            "theory_U": {k: T["SP"][k] for k in ("mean", "var", "skew", "exc", "H")},
            "theory_V": {k: T["PS"][k] for k in ("mean", "var", "skew", "exc", "H")},
            "sources": {}}
-    for name, files in SOURCES.items():
-        digits = digits_cache.setdefault(name, load_digits(files))
+    all_sources = {**{k: ("file", v) for k, v in SOURCES.items()}, **{k: ("gen", g) for k, g in CONTROLS.items()}}
+    for name, (kind, src) in all_sources.items():
+        if name not in digits_cache:
+            digits_cache[name] = load_digits(src) if kind == "file" else src(N_CONTROL_DIGITS)
+        digits = digits_cache[name]
         U, V, used = simulate(digits, model, N_SETS[model] * SET_SIZE)
         B = len(U) // SET_SIZE
         res = {"replicas": len(U), "digits_used": used, "digits_total": len(digits), "sets": B}
@@ -42,7 +48,7 @@ def run(model, digits_cache):
     json.dump(out, open(path, "w", encoding="utf-8"), indent=1)
     print(f"Salvat: {path}")
     # tabelul deviațiilor
-    cols = {f"{net} {name}": out["sources"][name][net]["dbar"] for net in ("SP", "PS") for name in SOURCES}
+    cols = {f"{net} {name}": out["sources"][name][net]["dbar"] for net in ("SP", "PS") for name in out["sources"]}
     pd.DataFrame(cols, index=CRITERIA).to_csv(RESULTS_DIR / f"tabel_deviatii_model_{model}.csv", float_format="%.6f")
     return out
 
@@ -61,7 +67,8 @@ def crqi_table():
                          "CRQI simplu global": (s["SP"]["CRQI_simplu"] + s["PS"]["CRQI_simplu"]) / 2,
                          "CRQI ponderat global": (s["SP"]["CRQI_ponderat"] + s["PS"]["CRQI_ponderat"]) / 2})
     df = pd.DataFrame(rows)
-    df["Loc"] = df.groupby("Model")["CRQI ponderat global"].rank(ascending=False).astype(int)
+    df["Control"] = df["Sursa"].str.contains("control")
+    df["Loc"] = df[~df["Control"]].groupby("Model")["CRQI ponderat global"].rank(ascending=False).astype("Int64")
     df.to_csv(RESULTS_DIR / "tabel_crqi.csv", index=False, float_format="%.6f")
     print(f"Salvat: {RESULTS_DIR / 'tabel_crqi.csv'}")
 
