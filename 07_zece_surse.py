@@ -27,7 +27,7 @@ from ztp.config import (RESULTS_DIR, FIGURE_DIR, MODELS, N_SETS, SET_SIZE, WEIGH
 from ztp.models import theory
 from ztp.simulation import load_digits, simulate
 from ztp.criteria import deviations
-from ztp.two_level import chi_con, chi_ind, null_stats, p_calibrated
+from ztp.two_level import chi_con, chi_ind, null_stats, p_calibrated, holm_significant
 
 SEED = 2026
 
@@ -60,6 +60,7 @@ def main():
         T = theory(m)
         nulls = {net: null_stats(T[net]["p"], rng) for net in ("SP", "PS")}
         res, glob = {}, {}
+        ks_rows = []  # (name, net, crit, p) pentru corecția Holm pe toată familia modelului
         for name, d in digits.items():
             U, V, used = simulate(d, m, N_SETS[m] * SET_SIZE)
             B = len(U) // SET_SIZE
@@ -71,9 +72,10 @@ def main():
                 per[net] = 1 - D @ w
                 p7 = p_calibrated(np.array([chi_con(s, T[net]["p"]) for s in sets]), nulls[net][0])
                 p9 = p_calibrated(np.array([chi_ind(s) for s in sets]), nulls[net][1])
-                r[net] = dict(CRQI_ponderat=float(per[net].mean()), dbar=D.mean(0).tolist(),
-                              ks_D7=float(stats.kstest(p7, "uniform").pvalue),
-                              ks_D9=float(stats.kstest(p9, "uniform").pvalue))
+                ks7 = float(stats.kstest(p7, "uniform").pvalue)
+                ks9 = float(stats.kstest(p9, "uniform").pvalue)
+                r[net] = dict(CRQI_ponderat=float(per[net].mean()), dbar=D.mean(0).tolist(), ks_D7=ks7, ks_D9=ks9)
+                ks_rows.append((name, net, "D7", ks7)); ks_rows.append((name, net, "D9", ks9))
             g = (per["SP"] + per["PS"]) / 2
             glob[name] = g
             r["CRQI_global"] = float(g.mean())
@@ -81,16 +83,22 @@ def main():
             r["crqi_global_b"] = g.tolist()
             r["ks_sub_005"] = int(sum(r[n][c] < 0.05 for n in ("SP", "PS") for c in ("ks_D7", "ks_D9")))
             res[name] = r
+        sig = holm_significant([row[3] for row in ks_rows])
+        for (name, net, crit, _), s in zip(ks_rows, sig):
+            res[name][net][f"holm_{crit}"] = bool(s)
+        for name, r in res.items():
             rows.append({"Model": m, "Sursa": name, "Clasa": SOURCES_10[name][0], "CRQI global": r["CRQI_global"],
                          "IC95 ±": r["ic95"], "CRQI S-P": r["SP"]["CRQI_ponderat"], "CRQI P-S": r["PS"]["CRQI_ponderat"],
-                         **{f"KS2 {n}-{c[3:]}": r[n][c] for n in ("SP", "PS") for c in ("ks_D7", "ks_D9")}})
+                         **{f"KS2 {n}-{c[3:]}": r[n][c] for n in ("SP", "PS") for c in ("ks_D7", "ks_D9")},
+                         **{f"Holm {n}-{c[3:]}": r[n][f"holm_{c[3:]}"] for n in ("SP", "PS") for c in ("ks_D7", "ks_D9")}})
         ranks = sorted(res, key=lambda k: -res[k]["CRQI_global"])
         for i, k in enumerate(ranks):
             res[k]["loc"] = i + 1
         test = effect_sizes(list(glob.values()))
-        out["modele"][m] = {"surse": res, "teste": test}
+        out["modele"][m] = {"surse": res, "teste": test,
+                            "holm_family_size": len(ks_rows), "holm_significant_count": int(sig.sum())}
         print(f"\nModelul {m}: ANOVA p = {test['p_anova']:.3f} (η² = {test['eta2']:.4f}), "
-              f"Kruskal-Wallis p = {test['p_kruskal']:.3f}")
+              f"Kruskal-Wallis p = {test['p_kruskal']:.3f} | Holm: {int(sig.sum())}/{len(ks_rows)} semnificative")
         for k in ranks:
             r = res[k]
             print(f"  {r['loc']:2d}. {k:24s} [{SOURCES_10[k][0]}] CRQI {r['CRQI_global']:.4f} ± {r['ic95']:.4f} | "

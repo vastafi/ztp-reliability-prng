@@ -81,7 +81,7 @@ def main():
                 per_set.append(1 - D @ w)
                 c_obs = np.array([chi_con(s, T[net]["p"]) for s in sets])
                 i_obs = np.array([chi_ind(s) for s in sets])
-                p_as = {"D7": 1 - D[:, 6], "D9": 1 - D[:, 8]}
+                p_as = {"D7": stats.chi2.sf(c_obs, K), "D9": stats.chi2.sf(i_obs, K * K)}
                 p_cal = {"D7": p_calibrated(c_obs, nulls[net][0]), "D9": p_calibrated(i_obs, nulls[net][1])}
                 g[net] = {}
                 for crit in ("D7", "D9"):

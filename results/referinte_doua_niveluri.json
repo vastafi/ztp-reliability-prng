@@ -73,11 +73,11 @@
      "D9": {
       "media_1_minus_p_asimptotic": 0.523061191318805,
       "media_1_minus_p_calibrat": 0.5223878636576645,
-      "ks_p_asimptotic": 0.11779240732461982,
+      "ks_p_asimptotic": 0.11779240732461937,
       "ks_p_calibrat": 0.10351964537786207
      }
     },
-    "CRQI_global": 0.8547155898457556,
+    "CRQI_global": 0.9778622561023146,
     "sets": 236
    },
    "Python secrets": {
@@ -109,7 +109,7 @@
       "ks_p_calibrat": 0.36204547549426036
      }
     },
-    "CRQI_global": 0.8566969484112741,
+    "CRQI_global": 0.9778937124263731,
     "sets": 236
    },
    "Cifrele lui pi": {
@@ -117,7 +117,7 @@
      "D7": {
       "media_1_minus_p_asimptotic": 0.48536419399848985,
       "media_1_minus_p_calibrat": 0.48312753853832735,
-      "ks_p_asimptotic": 0.7678333173284676,
+      "ks_p_asimptotic": 0.7678333173284663,
       "ks_p_calibrat": 0.7671016050427493
      },
      "D9": {
@@ -141,7 +141,7 @@
       "ks_p_calibrat": 0.3683851655863293
      }
     },
-    "CRQI_global": 0.8542801747530064,
+    "CRQI_global": 0.9781130697504049,
     "sets": 236
    },
    "RANDU (control)": {
@@ -173,7 +173,7 @@
       "ks_p_calibrat": 0.6860918701850018
      }
     },
-    "CRQI_global": 0.8556650009552006,
+    "CRQI_global": 0.9781236472654183,
     "sets": 236
    },
    "LCG mod 10 (control)": {
@@ -205,13 +205,13 @@
       "ks_p_calibrat": 0.8707042448179655
      }
     },
-    "CRQI_global": 0.7869371401992297,
+    "CRQI_global": 0.9651189144825454,
     "sets": 236
    },
    "Referință PCG64 (numpy)": {
     "SP": {
      "D7": {
-      "media_1_minus_p_asimptotic": 0.4921023221629037,
+      "media_1_minus_p_asimptotic": 0.4921023221629036,
       "media_1_minus_p_calibrat": 0.4897291152391533,
       "ks_p_asimptotic": 0.817616282614289,
       "ks_p_calibrat": 0.6187491770517212
@@ -219,7 +219,7 @@
      "D9": {
       "media_1_minus_p_asimptotic": 0.5182468229915733,
       "media_1_minus_p_calibrat": 0.5210798782094794,
-      "ks_p_asimptotic": 0.46334112090693014,
+      "ks_p_asimptotic": 0.4633411209069297,
       "ks_p_calibrat": 0.34736453208726203
      }
     },
@@ -237,7 +237,7 @@
       "ks_p_calibrat": 0.7331188480833062
      }
     },
-    "CRQI_global": 0.8543368206158722,
+    "CRQI_global": 0.9780438867204768,
     "sets": 236
    }
   },
@@ -247,13 +247,13 @@
      "D7": {
       "media_1_minus_p_asimptotic": 0.4831016546666089,
       "media_1_minus_p_calibrat": 0.48139965883061786,
-      "ks_p_asimptotic": 0.18013761260436545,
+      "ks_p_asimptotic": 0.18013761260436478,
       "ks_p_calibrat": 0.1697383657093563
      },
      "D9": {
       "media_1_minus_p_asimptotic": 0.45552377600861094,
       "media_1_minus_p_calibrat": 0.504484521536635,
-      "ks_p_asimptotic": 0.006718989174473351,
+      "ks_p_asimptotic": 0.006718989174473312,
       "ks_p_calibrat": 0.40301190935917564
      }
     },
@@ -271,7 +271,7 @@
       "ks_p_calibrat": 0.9866884658000328
      }
     },
-    "CRQI_global": 0.8601352646374038,
+    "CRQI_global": 0.9742511085012765,
     "sets": 236
    },
    "Python secrets": {
@@ -303,15 +303,15 @@
       "ks_p_calibrat": 0.6605285575950244
      }
     },
-    "CRQI_global": 0.8586940851095201,
+    "CRQI_global": 0.9737367409066181,
     "sets": 236
    },
    "Cifrele lui pi": {
     "SP": {
      "D7": {
-      "media_1_minus_p_asimptotic": 0.5324109941702969,
+      "media_1_minus_p_asimptotic": 0.532410994170297,
       "media_1_minus_p_calibrat": 0.5310586165606974,
-      "ks_p_asimptotic": 0.14115513787201384,
+      "ks_p_asimptotic": 0.1411551378720135,
       "ks_p_calibrat": 0.1330236417224906
      },
      "D9": {
@@ -325,7 +325,7 @@
      "D7": {
       "media_1_minus_p_asimptotic": 0.486769948360975,
       "media_1_minus_p_calibrat": 0.48795102617750474,
-      "ks_p_asimptotic": 0.8972477191719374,
+      "ks_p_asimptotic": 0.8972477191719366,
       "ks_p_calibrat": 0.9211416489406544
      },
      "D9": {
@@ -335,13 +335,13 @@
       "ks_p_calibrat": 0.6692760426509898
      }
     },
-    "CRQI_global": 0.8596569491624539,
+    "CRQI_global": 0.974063935362112,
     "sets": 236
    },
    "RANDU (control)": {
     "SP": {
      "D7": {
-      "media_1_minus_p_asimptotic": 0.4918020697988501,
+      "media_1_minus_p_asimptotic": 0.49180206979885,
       "media_1_minus_p_calibrat": 0.4900661746573688,
       "ks_p_asimptotic": 0.26494602340746043,
       "ks_p_calibrat": 0.274287851671532
@@ -367,7 +367,7 @@
       "ks_p_calibrat": 0.10381058233369633
      }
     },
-    "CRQI_global": 0.8572640847075779,
+    "CRQI_global": 0.9743031063121558,
     "sets": 236
    },
    "LCG mod 10 (control)": {
@@ -375,7 +375,7 @@
      "D7": {
       "media_1_minus_p_asimptotic": 0.912135299815525,
       "media_1_minus_p_calibrat": 0.9123935752364924,
-      "ks_p_asimptotic": 4.3898362598742655e-101,
+      "ks_p_asimptotic": 4.389836259874663e-101,
       "ks_p_calibrat": 1.1995063329672772e-101
      },
      "D9": {
@@ -399,7 +399,7 @@
       "ks_p_calibrat": 3.2106111513877166e-39
      }
     },
-    "CRQI_global": 0.8448899888911551,
+    "CRQI_global": 0.9660725171560264,
     "sets": 236
    },
    "Referință PCG64 (numpy)": {
@@ -431,7 +431,7 @@
       "ks_p_calibrat": 0.254014523688044
      }
     },
-    "CRQI_global": 0.8574189534119553,
+    "CRQI_global": 0.9737573011976347,
     "sets": 236
    }
   },
@@ -445,7 +445,7 @@
       "ks_p_calibrat": 0.14821043417458013
      },
      "D9": {
-      "media_1_minus_p_asimptotic": 0.4920508839421148,
+      "media_1_minus_p_asimptotic": 0.4920508839421147,
       "media_1_minus_p_calibrat": 0.49165556797537,
       "ks_p_asimptotic": 0.8325912729510112,
       "ks_p_calibrat": 0.7841758132425924
@@ -455,17 +455,17 @@
      "D7": {
       "media_1_minus_p_asimptotic": 0.48517844624795736,
       "media_1_minus_p_calibrat": 0.48378636344564696,
-      "ks_p_asimptotic": 0.23891724668263836,
+      "ks_p_asimptotic": 0.23891724668263936,
       "ks_p_calibrat": 0.15774538209635625
      },
      "D9": {
       "media_1_minus_p_asimptotic": 0.49241117316524974,
       "media_1_minus_p_calibrat": 0.49046241155278925,
-      "ks_p_asimptotic": 0.9027773518232486,
+      "ks_p_asimptotic": 0.9027773518232495,
       "ks_p_calibrat": 0.918165811230914
      }
     },
-    "CRQI_global": 0.8540918224600522,
+    "CRQI_global": 0.9782542554309508,
     "sets": 199
    },
    "Python secrets": {
@@ -473,7 +473,7 @@
      "D7": {
       "media_1_minus_p_asimptotic": 0.5060480919237562,
       "media_1_minus_p_calibrat": 0.5040680126797681,
-      "ks_p_asimptotic": 0.8781839622166505,
+      "ks_p_asimptotic": 0.8781839622166503,
       "ks_p_calibrat": 0.8952236012557274
      },
      "D9": {
@@ -493,11 +493,11 @@
      "D9": {
       "media_1_minus_p_asimptotic": 0.493394047744376,
       "media_1_minus_p_calibrat": 0.4914020630626761,
-      "ks_p_asimptotic": 0.9534253446683401,
+      "ks_p_asimptotic": 0.9534253446683407,
       "ks_p_calibrat": 0.9596988423450861
      }
     },
-    "CRQI_global": 0.8535294743479002,
+    "CRQI_global": 0.9780810159657332,
     "sets": 199
    },
    "Cifrele lui pi": {
@@ -525,11 +525,11 @@
      "D9": {
       "media_1_minus_p_asimptotic": 0.49422960795067483,
       "media_1_minus_p_calibrat": 0.49219976187120296,
-      "ks_p_asimptotic": 0.9196189531568812,
+      "ks_p_asimptotic": 0.9196189531568808,
       "ks_p_calibrat": 0.917269496020858
      }
     },
-    "CRQI_global": 0.8553983185176752,
+    "CRQI_global": 0.9784735157707661,
     "sets": 199
    },
    "RANDU (control)": {
@@ -543,7 +543,7 @@
      "D9": {
       "media_1_minus_p_asimptotic": 0.5274002760984431,
       "media_1_minus_p_calibrat": 0.5272731338307457,
-      "ks_p_asimptotic": 0.01598063097392468,
+      "ks_p_asimptotic": 0.015980630973924718,
       "ks_p_calibrat": 0.014169213183403292
      }
     },
@@ -561,7 +561,7 @@
       "ks_p_calibrat": 0.8081699681850695
      }
     },
-    "CRQI_global": 0.8537864497439384,
+    "CRQI_global": 0.9791416528790401,
     "sets": 199
    },
    "LCG mod 10 (control)": {
@@ -593,7 +593,7 @@
       "ks_p_calibrat": 0.5824818789024976
      }
     },
-    "CRQI_global": 0.7777923850094086,
+    "CRQI_global": 0.9626150757124501,
     "sets": 199
    },
    "Referință PCG64 (numpy)": {
@@ -607,7 +607,7 @@
      "D9": {
       "media_1_minus_p_asimptotic": 0.48942589111754653,
       "media_1_minus_p_calibrat": 0.489141623320844,
-      "ks_p_asimptotic": 0.43002606122743847,
+      "ks_p_asimptotic": 0.4300260612274397,
       "ks_p_calibrat": 0.40854438226803924
      }
     },
@@ -625,7 +625,7 @@
       "ks_p_calibrat": 0.48974106423404495
      }
     },
-    "CRQI_global": 0.851527910079735,
+    "CRQI_global": 0.9786048902266979,
     "sets": 199
    }
   }

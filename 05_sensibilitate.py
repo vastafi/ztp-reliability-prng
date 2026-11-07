@@ -26,7 +26,7 @@ def global_per_set(s):
 
 def main():
     out = {}
-    W = rng.dirichlet(np.ones(10), size=N_DRAWS)          # aceleași ponderi pentru toate modelele
+    W = rng.dirichlet(np.ones(len(WEIGHTS)), size=N_DRAWS)   # aceleași ponderi pentru toate modelele
     for m in MODELS:
         r = json.load(open(RESULTS_DIR / f"rezultate_model_{m}.json", encoding="utf-8"))["sources"]
         res = {}

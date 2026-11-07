@@ -41,3 +41,19 @@ def p_calibrated(obs, null):
     null = np.sort(null)
     ge = len(null) - np.searchsorted(null, obs, side="left")
     return (1 + ge) / (len(null) + 1)
+
+
+def holm_significant(pvalues, alpha=0.05):
+    """Procedura Holm step-down pentru o familie de teste (D7/D9, pe mai multe surse/rețele/modele).
+    Returnează un vector boolean (aceeași ordine ca pvalues): True = respinsă H0 la nivel alpha, corectat."""
+    p = np.asarray(pvalues, dtype=float)
+    order = np.argsort(p)
+    m = len(p)
+    thresh = alpha / np.arange(m, 0, -1)
+    passed = p[order] <= thresh
+    if not passed.all():
+        first_fail = np.argmax(~passed)
+        passed[first_fail:] = False
+    out = np.zeros(m, dtype=bool)
+    out[order] = passed
+    return out

@@ -24,11 +24,14 @@ N_SETS = {"I": 236, "II": 236, "III": 199}   # B seturi
 SET_SIZE = 1000                              # n replici / set
 DIGITS_PER_UNIFORM = 5                       # uniforma (0,1) din 5 cifre consecutive (Knuth)
 
-# ---- CRQI: ponderi D1..D10 (7 x 9/70, 3 x 1/30) ----
+# ---- CRQI: ponderi D1,D2,D3,D4,D5,D6,D8,D10 (5 x 9/50, 3 x 1/30) ----
+# D7 (chi2 concordanță) și D9 (chi2 independență) NU intră în CRQI: sunt teste de semnificație
+# (p calibrat prin simulare, ztp/two_level.py), nu măsuri de mărime a abaterii, și au o scară
+# (~U(0,1) sub H0) incomparabilă cu celelalte criterii. Sunt raportate separat, cu corecție Holm
+# pentru testări multiple (vezi holm_significant în ztp/two_level.py).
 CRITERIA = ["D1 - Medie", "D2 - Dispersie", "D3 - Asimetrie", "D4 - Exces de boltire",
-            "D5 - Entropie", "D6 - Autocorelație", "D7 - chi2 concordanță", "D8 - KS",
-            "D9 - chi2 independență", "D10 - Hazard"]
-WEIGHTS = [9/70, 1/30, 1/30, 1/30, 9/70, 9/70, 9/70, 9/70, 9/70, 9/70]
+            "D5 - Entropie", "D6 - Autocorelație", "D8 - KS", "D10 - Hazard"]
+WEIGHTS = [9/50, 1/30, 1/30, 1/30, 9/50, 9/50, 9/50, 9/50]
 
 # ---- sursele de cifre (ordinea fișierelor contează: definește șirul de cifre) ----
 SOURCES = {
